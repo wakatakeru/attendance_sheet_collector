@@ -1,24 +1,11 @@
-# README
+# Attendance Sheet Collector
+## What this?
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is attendance sheet collecting system.
 
-Things you may want to cover:
+## Requirements
+## Deployment with Docker
+- Docker
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Installation
+1. `docker-compose up -d`
