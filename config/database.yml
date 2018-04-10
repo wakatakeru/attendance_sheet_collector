@@ -2,9 +2,9 @@ default: &default
   adapter: postgresql
   encording: unicode 
   timeout: 5000
-  host: DB_HOST
-  username: DB_USERNAME
-  password: DB_PASSWORD
+  host: <%= ENV['DB_HOST'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
   
 development:
   <<: *default
