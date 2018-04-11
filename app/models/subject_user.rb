@@ -1,0 +1,2 @@
+class SubjectUser < ApplicationRecord
+end
