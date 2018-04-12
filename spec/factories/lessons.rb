@@ -1,5 +1,8 @@
+require 'faker'
+
 FactoryBot.define do
   factory :lesson do
-    week ""
+    subject
+    week Faker::Number.between(2000, 2099)
   end
 end
