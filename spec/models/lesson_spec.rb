@@ -26,9 +26,9 @@ RSpec.describe Lesson, type: :model do
       end
 
       it '重複していれば保存失敗' do
-        l1 = FactoryBot.build(:lesson, week: 2000, subject_id: 1)
-        l2 = FactoryBot.build(:lesson, week: 2000, subject_id: 1)
-        expect(l2).not_to be_valid
+        FactoryBot.build(:lesson, week: 2000, subject_id: 1)
+        l = FactoryBot.build(:lesson, week: 2000, subject_id: 1)
+        expect(l).not_to be_valid
       end
     end
   end

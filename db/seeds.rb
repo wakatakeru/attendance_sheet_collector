@@ -9,7 +9,7 @@ student = User.create(
 )
 
 #== TestTeacherUser
-teacher = User.create(
+User.create(
   name: 'teacher',
   st_num: 'teacher',
   email: 'teacher@stu.kagawa-u.ac.jp',
@@ -32,7 +32,7 @@ l = Lesson.create(
 )
 
 #== TestAS
-a = AttendanceSheet.create(
+AttendanceSheet.create(
   user_id: student.id,
   lesson_id: l.id,
   comment: 'hogehoge'
