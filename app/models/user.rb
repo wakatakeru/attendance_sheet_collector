@@ -6,8 +6,8 @@ class User < ApplicationRecord
   enum role: {student: 0, auditor: 10, assistant: 20, teacher: 30}
 
   validates :st_num, presence: true, uniqueness: true
-  validates :role, inclusion: { in: [:student, :auditor, :assistant, :teacher] }
-  
+  validates :role,  inclusion: {in: User.roles.keys}
+
   def admin?
     return true if self.assistant? || self.teacher?
     false

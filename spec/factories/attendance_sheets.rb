@@ -1,8 +1,10 @@
+require 'faker'
+
 FactoryBot.define do
   factory :attendance_sheet do
-    comment "MyText"
-    summary "MyText"
-    score ""
-    question "MyText"
+    user
+    lesson
+    comment Faker::Matz.quote
+    summary Faker::Matz.quote
   end
 end
