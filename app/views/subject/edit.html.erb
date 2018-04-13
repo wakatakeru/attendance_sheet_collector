@@ -1,0 +1,27 @@
+<h2>授業編集</h2>
+<hr>
+<div class="row">
+  <div class="col-sm">
+    <%= form_for @subject, url: {action: 'update'}, class: 'form-group' do |f| %>
+    <div class="form-group">
+      <%= f.label '授業名(登録名)' %>
+      <%= f.text_field :name, class: 'form-control'%>
+    </div>
+    <div class="form-group">
+      <%= f.label '授業名(表示名)' %>
+      <%= f.text_field :display_name, class: 'form-control'%>
+    </div>
+    <div class="form-group">
+      <%= f.label '学期' %>
+      <%= f.text_field :term, class: 'form-control'%>
+    </div>
+    <div class="form-group">
+      <%= f.label '授業ページのURL' %>
+      <%= f.text_field :url, class: 'form-control'%>
+    </div>
+    <div class="form-group">
+      <%= f.submit '更新', class: 'btn btn-primary'%>
+    </div>
+    <% end %>
+  </div>
+</div>

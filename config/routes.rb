@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'admin_home/index'
   devise_for :users
+  resources :subject
 end
