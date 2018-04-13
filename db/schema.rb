@@ -10,10 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_10_111437) do
+ActiveRecord::Schema.define(version: 2018_04_11_090639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attendance_sheets", force: :cascade do |t|
+    t.text "comment"
+    t.text "summary"
+    t.integer "score"
+    t.text "question"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "lesson_id"
+  end
+
+  create_table "lessons", force: :cascade do |t|
+    t.integer "week"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "subject_id"
+  end
+
+  create_table "subjects", force: :cascade do |t|
+    t.string "name"
+    t.string "display_name"
+    t.integer "term"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "subjects_users", force: :cascade do |t|
+    t.integer "subject_id"
+    t.integer "user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -30,7 +62,7 @@ ActiveRecord::Schema.define(version: 2018_04_10_111437) do
     t.datetime "updated_at", null: false
     t.string "st_num"
     t.string "name"
-    t.integer "role"
+    t.integer "role", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
