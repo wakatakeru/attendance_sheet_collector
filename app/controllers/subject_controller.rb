@@ -2,7 +2,7 @@ class SubjectController < ApplicationController
   before_action :authenticate_admin!
   
   def index
-    @subjects = Subject.all.sort {|s1, s2| s1.term <=> s2.term}
+    @subjects = Subject.preload(:lessons).sort {|s1, s2| s1.term <=> s2.term}
   end
 
   def show
@@ -64,7 +64,7 @@ class SubjectController < ApplicationController
   
   def authenticate_admin!
     unless current_user.admin?
-      redirect_to dashboard_student_index_path, alert: 'このページへのアクセスは許可されていません'
+      redirect_to dashboard_index_path, alert: 'このページへのアクセスは許可されていません'
     end
   end
 end

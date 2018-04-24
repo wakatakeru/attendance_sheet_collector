@@ -6,7 +6,7 @@ class Dashboard::AdminController < ApplicationController
 
   def authenticate_admin!
     unless current_user.admin?
-      redirect_to dashboard_student_index_path, alert: 'このページへのアクセスは許可されていません'
+      redirect_to dashboard_index_path, alert: 'このページへのアクセスは許可されていません'
     end
   end
 end

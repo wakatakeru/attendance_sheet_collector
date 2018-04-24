@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     if user.admin?
       dashboard_admin_index_path
     else
-      dashboard_student_index_path
+      dashboard_index_path
     end
   end
 end

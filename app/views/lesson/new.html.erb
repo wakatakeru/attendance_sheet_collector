@@ -1,0 +1,18 @@
+<h2>授業登録</h2>
+<hr>
+<div class="row">
+  <div class="col-sm">
+    <%= form_tag lesson_index_path, class: 'form-group' do %>
+    <div class="form-group">
+      <%= label_tag '授業回数' %>
+      <%= text_field_tag :week_count, '15', class: 'form-control'%>
+    </div>
+    <div class="form-group">
+      <%= hidden_field_tag :subject_id, @subject_id %>
+    </div>
+    <div class="form-group">
+      <%= submit_tag '登録', class: 'btn btn-primary'%>
+    </div>
+    <% end %>
+  </div>
+</div>
