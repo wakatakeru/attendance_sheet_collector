@@ -2,7 +2,7 @@ class SubjectController < ApplicationController
   before_action :authenticate_admin!
   
   def index
-    @subject = Subject.all
+    @subjects = Subject.all.sort {|s1, s2| s1.term <=> s2.term}
   end
 
   def show
@@ -19,9 +19,9 @@ class SubjectController < ApplicationController
     @subject.users << current_user
     
     if @subject.save
-      redirect_to dashboard_admin_index_path
+      redirect_to subject_index_path, notice: '新規登録に成功しました'
     else
-      render 'new'
+      render 'new', alert: '新規登録に失敗しました'
     end
   end
   
@@ -38,9 +38,9 @@ class SubjectController < ApplicationController
     @subject.url = user_params[:url]
     
     if @subject.save
-      redirect_to dashboard_admin_index_path
+      redirect_to subject_index_path, notice: '更新に成功しました'
     else
-      redirect_to dashboard_admin_index_path
+      redirect_to subject_index_path, alert:  '更新に失敗しました'
     end
   end
   

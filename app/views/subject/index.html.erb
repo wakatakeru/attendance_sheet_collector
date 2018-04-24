@@ -1,2 +1,26 @@
-<h1>Subject#index</h1>
-<p>Find me in app/views/subject/index.html.erb</p>
+<div class="row">
+  <div class="col">
+    <h2>授業一覧</h2>
+  </div>
+  <div class="col">
+    <%= link_to '新規登録', {controller: :subject, action: :new}, class: 'btn btn-primary float-right'%>
+  </div>
+</div>
+<table class="table">
+  <tr>
+    <th>実施年度</th>
+    <th>授業名</th>
+    <th>表示名</th>
+    <th>講義</th>
+    <th>操作</th>
+    <% @subjects.each do |subject| %>
+  </tr>
+  <tr>
+    <td><%= subject.term %></td>
+    <td><%= subject.name %></td>
+    <td><%= subject.display_name %></td>
+    <td>講義回数を一覧</td>
+    <td><%= link_to '編集', {controller: :subject, action: :edit, id: subject.id}, class: 'btn-success btn-sm'%></td>
+  </tr>
+<% end %>
+</table>
