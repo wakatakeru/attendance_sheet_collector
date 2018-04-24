@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  root 'home#index'
-  get 'home/index'
-  get 'admin_home/index'
+  root 'dashboard/student#index'
+  get 'dashboard/admin/index'
+  get 'dashboard/student/index'
   devise_for :users
   resources :subject
 end

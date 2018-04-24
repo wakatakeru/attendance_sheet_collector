@@ -8,9 +8,9 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(user)
     if user.admin?
-      admin_home_index_path
+      dashboard_admin_index_path
     else
-      home_index_path
+      dashboard_student_index_path
     end
   end
 end

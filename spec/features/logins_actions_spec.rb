@@ -27,12 +27,12 @@ RSpec.describe 'Logins', type: :feature do
     end
     
     it '学生用トップページが表示される' do
-      expect(page).to have_current_path(home_index_path)
+      expect(page).to have_current_path(dashboard_student_index_path)
     end
 
     it '管理者用トップページには遷移できない' do
-      visit admin_home_index_path
-      expect(page).to have_current_path(home_index_path)
+      visit dashboard_admin_index_path
+      expect(page).to have_current_path(dashboard_student_index_path)
     end
   end
 
@@ -47,12 +47,12 @@ RSpec.describe 'Logins', type: :feature do
     end
 
     it '管理者用トップページに遷移する' do
-      expect(page).to have_current_path(admin_home_index_path)
+      expect(page).to have_current_path(dashboard_admin_index_path)
     end
 
     it '学生用トップページも表示できる' do
-      visit home_index_path
-      expect(page).to have_current_path(home_index_path)
+      visit dashboard_student_index_path
+      expect(page).to have_current_path(dashboard_student_index_path)
     end
   end
 end
