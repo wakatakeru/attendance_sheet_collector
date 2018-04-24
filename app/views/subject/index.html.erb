@@ -20,7 +20,11 @@
     <td><%= subject.name %></td>
     <td><%= subject.display_name %></td>
     <td>講義回数を一覧</td>
-    <td><%= link_to '編集', {controller: :subject, action: :edit, id: subject.id}, class: 'btn-success btn-sm'%></td>
+    <td>
+      <%= link_to '編集', {controller: :subject, action: :edit, id: subject.id}, class: 'btn-success btn-sm'%>
+      <%= link_to '講義登録', {controller: :subject, action: :new, subject_id: subject.id}, class: 'btn-primary btn-sm'%>
+      # pending
+    </td>
   </tr>
 <% end %>
 </table>

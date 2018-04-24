@@ -15,7 +15,8 @@ class SubjectController < ApplicationController
 
   def create
     @subject = Subject.new(user_params)
-
+    p @week_count = week_count_params
+    
     @subject.users << current_user
     
     if @subject.save
@@ -51,10 +52,16 @@ class SubjectController < ApplicationController
       :name,
       :display_name,
       :term,
-      :url
+      :url,
     )
   end
 
+  def week_count_params
+    params.require(:subject).permit(
+      :week_count
+    )
+  end
+  
   def authenticate_admin!
     unless current_user.admin?
       redirect_to dashboard_student_index_path, alert: 'このページへのアクセスは許可されていません'
