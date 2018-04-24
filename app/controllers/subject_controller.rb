@@ -19,7 +19,7 @@ class SubjectController < ApplicationController
     @subject.users << current_user
     
     if @subject.save
-      redirect_to admin_home_index_path
+      redirect_to dashboard_admin_index_path
     else
       render 'new'
     end
@@ -38,9 +38,9 @@ class SubjectController < ApplicationController
     @subject.url = user_params[:url]
     
     if @subject.save
-      redirect_to admin_home_index_path
+      redirect_to dashboard_admin_index_path
     else
-      redirect_to admin_home_index_path
+      redirect_to dashboard_admin_index_path
     end
   end
   
@@ -57,7 +57,7 @@ class SubjectController < ApplicationController
 
   def authenticate_admin!
     unless current_user.admin?
-      redirect_to home_index_path, alert: 'このページへのアクセスは許可されていません'
+      redirect_to dashboard_student_index_path, alert: 'このページへのアクセスは許可されていません'
     end
   end
 end
