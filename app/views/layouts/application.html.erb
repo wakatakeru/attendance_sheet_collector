@@ -14,7 +14,11 @@
   <body>
     <div class="container-fruid">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+      <% if user_signed_in? && current_user.admin? %>
+      <%= link_to 'AttendanceSheet', dashboard_admin_index_path, class: 'navbar-brand' %>
+      <% else %>
       <%= link_to 'AttendanceSheet', dashboard_index_path, class: 'navbar-brand' %>
+      <% end %>
       <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navbar" aria-controls="Navbar" aria-expanded="false">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -22,7 +26,16 @@
         <% if user_signed_in? && current_user.admin? %>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
+            <%= link_to '実施監視', dashboard_admin_index_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
             <%= link_to '授業管理', subject_index_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'ユーザ管理', user_index_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to '学生ページ', dashboard_index_path, class: 'nav-link' %>
           </li>
         </ul>
         <% end %>

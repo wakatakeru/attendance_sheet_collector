@@ -28,6 +28,11 @@
     <td>
       <%= link_to '編集', {controller: :subject, action: :edit, id: subject.id}, class: 'btn-success btn-sm'%>
       <%= link_to '講義登録', {controller: :lesson, action: :new, subject_id: subject.id}, class: 'btn-primary btn-sm'%>
+      <% if subject.monitored %>
+      <%= link_to '監視をやめる', {controller: :subject, action: :edit, id: subject.id}, class: 'btn-dark btn-sm'%>
+      <% else %>
+      <%= link_to '監視対象にする', {controller: :subject, action: :edit, id: subject.id}, class: 'btn-danger btn-sm'%>
+      <% end %>
     </td>
   </tr>
 <% end %>

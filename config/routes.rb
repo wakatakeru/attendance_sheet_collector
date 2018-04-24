@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   devise_for :users
   resources :subject
   resources :lesson
+  resources :user
 end
