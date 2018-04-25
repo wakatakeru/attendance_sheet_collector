@@ -15,9 +15,7 @@ class SubjectController < ApplicationController
 
   def create
     @subject = Subject.new(user_params)
-    p @week_count = week_count_params
-    
-    @subject.users << current_user
+    @week_count = week_count_params
     
     if @subject.save
       redirect_to subject_index_path, notice: '新規登録に成功しました'
@@ -38,6 +36,28 @@ class SubjectController < ApplicationController
     @subject.term = user_params[:term]
     @subject.url = user_params[:url]
     
+    if @subject.save
+      redirect_to subject_index_path, notice: '更新に成功しました'
+    else
+      redirect_to subject_index_path, alert:  '更新に失敗しました'
+    end
+  end
+
+  def enable_monitoring
+    @subject = Subject.find(params['id'])
+    @subject.monitored = true
+
+    if @subject.save
+      redirect_to subject_index_path, notice: '更新に成功しました'
+    else
+      redirect_to subject_index_path, alert:  '更新に失敗しました'
+    end
+  end
+
+  def disable_monitoring
+    @subject = Subject.find(params['id'])
+    @subject.monitored = false
+
     if @subject.save
       redirect_to subject_index_path, notice: '更新に成功しました'
     else

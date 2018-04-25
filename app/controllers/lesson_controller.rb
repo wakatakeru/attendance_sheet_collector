@@ -49,12 +49,12 @@ class LessonController < ApplicationController
   end
 
   def insert_lessons(week_count, subject_id)
-    # TODO: バルクインサートに対応したら削除するメソッド
-    lessons = (1..week_count).collect {|week| Lesson.new(week: week, subject_id: subject_id)}
+    # TODO: このメソッドはバルクインサートに対応したら削除する
+    (1..week_count).each do |week|
+      lesson = Lesson.new(week: week, subject_id: subject_id)
+      lesson.save if lesson.valid?
+    end
 
-    return false if lessons.map{|l| l.valid?}.include?(false)
-
-    lessons.each {|l| l.save}
     return true
   end
 

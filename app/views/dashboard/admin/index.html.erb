@@ -1,1 +1,30 @@
-dashboard#admin
+<div class="row">
+  <div class="col">
+    <h2>監視中の授業一覧</h2>
+  </div>
+</div>
+<table class="table">
+  <tr>
+    <th>実施年度</th>
+    <th>授業名</th>
+    <th>表示名</th>
+    <th>講義</th>
+    <th>操作</th>
+    <% @subjects.each do |subject| %>
+  </tr>
+  <tr>
+    <td><%= subject.term %></td>
+    <td><%= subject.name %></td>
+    <td><%= subject.display_name %></td>
+    <td>
+      <% lessons = subject.lessons %>
+      <% lessons.sort {|l1, l2| l1.week <=> l2.week }.each do |l|%>
+      <%= link_to "[#{l.week}]", {controller: '/lesson', action: :show, id: l.id}%>
+      <% end %>
+    </td>
+    <td>
+      <%= link_to '全体の提出状況', {controller: :admin, action: :show, subject_id: subject.id}, class: 'btn-success btn-sm'%>
+    </td>
+  </tr>
+<% end %>
+</table>
