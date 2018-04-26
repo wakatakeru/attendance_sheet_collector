@@ -26,15 +26,19 @@
       <% end %>
     </td>
     <td>
-      <%= link_to '編集', {controller: :subject, action: :edit, id: subject.id}, class: 'btn-success btn-sm'%>
-      <%= link_to '受講者管理', {controller: :subject, action: :show, id: subject.id}, class: 'btn-info btn-sm'%>
-      <%= link_to '講義登録', {controller: :lesson, action: :new, subject_id: subject.id}, class: 'btn-primary btn-sm'%>
-      <% if subject.monitored %>
-      <%= link_to '監視中止', {controller: :subject, action: :disable_monitoring, id: subject.id}, class: 'btn-dark btn-sm'%>
-      <% else %>
-      <%= link_to '監視開始', {controller: :subject, action: :enable_monitoring, id: subject.id}, class: 'btn-danger btn-sm'%>
-      <% end %>
+      <div>
+        <%= link_to '授業編集', {controller: :subject, action: :edit, id: subject.id}, class: 'btn-success btn-sm'%>
+        <%= link_to '受講者管理', {controller: :subject, action: :show, id: subject.id}, class: 'btn-info btn-sm'%>
+      </div>
+      <div>
+        <%= link_to '講義登録', {controller: :lesson, action: :new, subject_id: subject.id}, class: 'btn-primary btn-sm'%>
+        <% if subject.monitored %>
+        <%= link_to '監視中止', {controller: :subject, action: :disable_monitoring, id: subject.id}, class: 'btn-dark btn-sm'%>
+        <% else %>
+        <%= link_to '監視開始', {controller: :subject, action: :enable_monitoring, id: subject.id}, class: 'btn-danger btn-sm'%>
+        <% end %>
+      </div>
     </td>
   </tr>
-<% end %>
+  <% end %>
 </table>
