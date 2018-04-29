@@ -1,0 +1,18 @@
+<h2>授業参加シート</h2>
+<h4><%= "#{@subject.term}年度 #{@subject.display_name} #{@lesson.week}" %></h4>
+<hr>
+<h3>授業要旨</h3>
+<hr>
+<p>
+  <%= @sheet.summary %>
+</p>
+<h3>授業コメント</h3>
+<hr>
+<p>
+  <%= @sheet.comment %>
+</p>
+<h3>質問</h3>
+<hr>
+<p>
+  <%= @sheet.question %>
+</p>

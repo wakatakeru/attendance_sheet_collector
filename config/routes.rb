@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   end
   resources :lesson
   resources :user
+  resources :attendance_sheet
 end

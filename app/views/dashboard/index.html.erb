@@ -13,7 +13,7 @@
     <td><%= "#{subject.display_name}"%></td>
     <td>
       <% subject.lessons.each do |l| %>
-      <%= "[#{l.week}]" %>
+      <%= link_to "[#{l.week}]", {controller: '/attendance_sheet', action: :new, lesson_id: l.id}%>
       <% end %>
     </td>
   </tr>
