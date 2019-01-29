@@ -1,6 +1,18 @@
 Rails.application.routes.draw do
-  root 'home#index'
-  get 'home/index'
-  get 'admin_home/index'
+  root 'dashboard#index'
+
+  get 'dashboard/index'
+  get 'dashboard/admin/index'
+  get 'dashboard/admin/show'
+  
   devise_for :users
+  resources :subject do
+    member do
+      get 'enable_monitoring'
+      get 'disable_monitoring'
+    end
+  end
+  resources :lesson
+  resources :user
+  resources :attendance_sheet
 end

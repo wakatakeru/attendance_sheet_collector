@@ -1,0 +1,32 @@
+<h4><%= "#{@subject.term}年度" %></h4>
+<h2><%= "#{@subject.display_name}" %></h2>
+<h2><%= "第#{@lesson.week}回" %></h2>
+<hr>
+<h3>提出状況</h3>
+<table class="table">
+  <tr>
+    <th>学籍番号</th>
+    <th>名前</th>
+    <th>提出状況</th>
+    <th>提出日時</th>
+  </tr>
+  <% @situations.each do |s| %>
+  <tr>
+    <td><%= s[:st_num] %></td>
+    <td><%= s[:name] %></td>
+    <td>
+      <% if s[:submitted] == true %>
+      提出済み
+      <% else %>
+      未提出
+      <% end %>
+    </td>
+    <td>
+      <% if s[:submitted] %>
+      <%= s[:attendance_sheet].created_at %>
+      <% end %>
+    </td>
+  </tr>
+  <% end%>
+  </tr>
+</table>

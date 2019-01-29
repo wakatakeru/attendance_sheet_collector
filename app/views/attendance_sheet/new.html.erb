@@ -1,0 +1,27 @@
+<h2>授業参加シート提出フォーム</h2>
+<h4><%= "#{@subject.term}年度 #{@subject.display_name} #{@lesson.week}回目"%></h4>
+<hr>
+<div class="row">
+  <div class="col-sm">
+    <%= form_for :attendance_sheet, url: {action: 'create'}, class: 'form-group' do |f| %>
+    <div class="form-group">
+      <%= f.label '授業要旨(必須)' %>
+      <%= f.text_area :summary, class: 'form-control', size: '20x8' %>
+    </div>
+    <div class="form-group">
+      <%= f.label '授業コメント(必須)' %>
+      <%= f.text_area :comment, class: 'form-control', size: '20x8'%>
+    </div>
+    <div class="form-group">
+      <%= f.label '質問(任意)' %>
+      <%= f.text_area :question, class: 'form-control', size: '20x3'%>
+    </div>
+    <div>
+      <%= f.hidden_field :lesson_id, value: @lesson.id %>
+    </div>
+    <div class="form-group">
+      <%= f.submit '提出', class: 'btn btn-primary'%>
+    </div>
+    <% end %>
+  </div>
+</div>

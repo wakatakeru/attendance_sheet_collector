@@ -1,0 +1,22 @@
+<h2>ようこそ<%= "#{@user.name}" %>さん！</h2>
+<hr>
+<h3>あなたの受講している授業</h3>
+<table class="table">
+  <tr>
+    <th>年度</th>
+    <th>授業名</th>
+    <th>授業</th>
+  </tr>
+  <% @subjects.each do |subject| %>
+  <tr>
+    <td><%= "#{subject.term}"%></td>
+    <td><%= "#{subject.display_name}"%></td>
+    <td>
+      <% subject.lessons.each do |l| %>
+      <%= link_to "[#{l.week}]", {controller: '/attendance_sheet', action: :new, lesson_id: l.id}%>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
